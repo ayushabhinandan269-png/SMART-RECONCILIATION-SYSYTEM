@@ -13,14 +13,8 @@ router.get(
   "/:uploadJobId",
   protect,
   allowRoles("Admin", "Analyst", "Viewer"),
-  async (req, res) => {
-    try {
-      const stats = await getDashboardStats(req.params.uploadJobId);
-      res.json(stats);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  }
+  getDashboardStats   // ✅ PASS CONTROLLER DIRECTLY
 );
 
 export default router;
+
