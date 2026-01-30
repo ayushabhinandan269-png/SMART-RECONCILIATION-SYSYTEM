@@ -4,7 +4,7 @@ import uploadRoutes from "./routes/upload.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 import auditRoutes from "./routes/audit.routes.js";
 import manualCorrectionRoutes from "./routes/manualCorrection.routes.js";
-
+import authRoutes from "./routes/auth.routes.js";
 const app = express();
 
 app.use(cors());
@@ -13,7 +13,7 @@ app.use("/api/uploads", uploadRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/audit", auditRoutes);
 app.use("/api/records", manualCorrectionRoutes);
-
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Smart Reconciliation API running");
