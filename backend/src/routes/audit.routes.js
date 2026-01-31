@@ -6,6 +6,26 @@ import { allowRoles } from "../middlewares/role.js";
 const router = express.Router();
 
 /**
+ * GET /api/audit
+ * Returns all audit logs
+ */
+router.get(
+  "/",
+  protect,
+  allowRoles("Admin", "Analyst", "Viewer"),
+  async (req, res) => {
+    try {
+      const logs = await AuditLog.find()
+        .sort({ timestamp: -1 })
+        .limit(100);
+
+      res.json(logs);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  }
+);
+/**
  * GET /api/audit/timeline/:recordId
  * Returns audit timeline for a record
  */
