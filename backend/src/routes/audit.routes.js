@@ -2,7 +2,7 @@ import express from "express";
 import { getRecordTimeline } from "../controllers/audit.controller.js";
 import { protect } from "../middlewares/auth.js";
 import { allowRoles } from "../middlewares/role.js";
-
+import AuditLog from "../models/AuditLog.js";
 const router = express.Router();
 
 /**
