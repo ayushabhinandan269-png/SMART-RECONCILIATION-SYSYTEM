@@ -5,6 +5,8 @@ import dashboardRoutes from "./routes/dashboard.routes.js";
 import auditRoutes from "./routes/audit.routes.js";
 import manualCorrectionRoutes from "./routes/manualCorrection.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import reconciliationRoutes from "./routes/reconciliation.routes.js";
+
 const app = express();
  
 
@@ -27,6 +29,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/audit", auditRoutes);
 app.use("/api/records", manualCorrectionRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/reconciliation", reconciliationRoutes);
 
 app.get("/", (req, res) => {
   res.send("Smart Reconciliation API running");
