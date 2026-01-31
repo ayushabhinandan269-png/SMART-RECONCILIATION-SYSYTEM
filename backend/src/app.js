@@ -6,12 +6,20 @@ import auditRoutes from "./routes/audit.routes.js";
 import manualCorrectionRoutes from "./routes/manualCorrection.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 const app = express();
+ 
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 
 
-app.use(cors({
-  origin: "*",
-}));
+
 
 app.use(express.json());
 app.use("/api/uploads", uploadRoutes);
